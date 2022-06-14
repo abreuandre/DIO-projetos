@@ -1,5 +1,45 @@
 Link para download do Git: https://git-scm.com/downloads
 
+O Git é um sistema de versionamento de código distribuído que nos ajuda a criar e monitorar diferentes versões do nosso código dentro da nossa máquina. O Git é um CLI(Command Line Interface), ou seja, ele não tem interface gráfica, diferente de outros programas que utilizam GUI(Graphical User Interface)
+
+O Github é um repositório online onde são armazenados os códigos.
+
+*dir - comando que vai trazer uma lista de diretórios,pastas, programas contidos na pasta na qual estamos situado. Esse comando é digitado no CMD do Windows.
+*ls - comando que vai trazer uma lista de diretórios contidos na pasta na qual estamos situado. Esse comando é digitado no terminal do Linux.
+*cd(change directory) - esse comando permite que possamos navegar pelas pastas e ele é igual para todos os sistemas operacionais.
+*cd .. - esse comando retrocede ao diretório anterior.
+*cls(clear screen) - comando para limpar a tela do CMD.
+*clear - condo para limpar a tela do terminal Linux.
+*tecla Tab - tem a função de autocompletar.
+*mkdir(make directory) - cria uma pasta. Esse comando é igual para Windows e Linux.
+*echo - comando para criar arquivo. Ex: echo hello > hello.txt. Esse comando pode ser feito tanto no Windows quanto no Linux.
+*del(delete) - deleta o arquivo ou tudo que está dentro de uma determinada pasta. Ex: del workspace
+*rmdir(remove directory) - esse comando remove o diretório com todos os arquivos contidos nele. Windows
+*rm -rf - esse comando remove o diretório com todos os arquivos contidos nele. Linux.
+
 O Git Bash é um terminal extendido para otimizar o uso do Git.
 
+---------------------------------------------------------------------
+
+A sigla SHA1 significa Secure Hash Algorithm (Algoritmo de Hash Seguro), é um conjunto de funções hash criptográficas projetadas pela NSA (Agência de Segurança Nacional dos EUA). A encriptação gera conjunto de caracteres identificador de 40 dígitos e esse caracter de 40 dígitos é único, usado como identificação.
+
+No git bash podemos digitar os comandos abaixo:
+$ openssl sha1 texto.txt - vai gerar um conjunto de caracteres de 40 dígitos. Caso o arquivo sofra alguma alteração e depois digitarmos esse comando novamente, outra chave é gerada, mostrando que o arquivo sofreu alteração.
+
+O Git tem 3 tipos básicos de objetos: BLOBS, TREES e COMMITS.
+
+BLOBS - echo 'conteudo' | git hash-object --stdin
+echo -e 'conteudo' | openssl sha1
+
+
+
+
+*git clone - clona o repositório criado no github dentro do repositório criado na máquina local.
+
 *git status - mostra os arquivos que sofreram alterações;
+
+*git add . ou git add -A - adiciona uma alteração no diretório ativo à área de staging. Ele diz ao Git que você quer incluir atualizações a um arquivo específico no próximo commit. No entanto, git add não tem efeito real e significativo no repositório — as alterações não são gravadas mesmo até você executar git commit.
+
+*git commit -m "mensagem" - permite que você crie um commit, ou seja, você consegue guardar o estado do seu repositório naquele momento.
+
+*git push origin main - permite que você envie (ou em tradução literal, empurre) os commits de sua branch e repositório Git local para o seu repositório remoto. Para poder fazer um git push para seu repositório remoto, você deve garantir que todas as suas alterações no repositório local sejam confirmadas.
