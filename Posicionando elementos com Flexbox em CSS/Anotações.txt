@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"
+<title>Fundamentos - flex flow</title>
+
+<style>
+
+
+</style>
+
+</head>
+<body>
+
+</body>
+</html>
+
+----------------------------------------------------------------------------------------
+
+
+O Flex Box foi projetado como um modelo de layout unidimensional e como um método que pode oferecer distribuição de espaço entre itens em uma interface e recursos de alinhamento. Os principais navegadores que suportam essas propriedades são Google chrome 29.0, Internet Explorer 11.0, Mozilla Firefox 22.0, Safari 10 e Opera 48.
+
+Flex container é a tag que envolve os itens, será nela que iremos aplicar a propriedade "display: flex". Transforma todos os seus itens filhos em flex itens.
+Propriedades do Flex Container:
+*Display - é o inicializador do container;
+*flex-direction - faz o direcionamento dos itens, seja em linhas ou coluna;
+*flex-wrap - se aplica em quebra de linha;
+*flex-flow - abreviação para o direct ou wrap;
+*justify-content - vai alinhar os itens do container de acordo com a sua direção;
+*align-items - vai alinhar os itens de acordo com o eixo do container;
+*align-content - vai alinhar as linhas desse container;
+
+Flex Item são elementos filhos diretos do Flex Container. Também podem se tornar Flex container.
+Propriedades do Flex Item:
+*flex-grow - vai definir o fator de crescimento;
+*flex-basis - vai definir o tamanho inicial desse item antes da distribuição do espaço restante dentro do container;
+*flex-shrink - define a capacidade de redução;
+*flex - abreviação para o grow, basis e shrink;
+*order - ordem de distribuição e listagem desses itens;
+*align-self - definir o alinhamento de um item específico desse container;
+
+---------------------------------------------------------------------
+
+css flexbox
+
+HTML snippets - autocomplete
+Live HTML Previewer - renderização dos elementos html em tela
+
+-display-flex.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"
+<title>Fundamentos - display flex</title>
+<style>
+.flex{
+    max-width: 300px;
+    padding: 10px;
+    border: 2px solid black;
+    display: flex;
+}
+
+.item{
+    background-color: aqua;
+    margin: 5px;
+}
+</style>
+</head>
+<body>
+<div class="flex">
+<div class="item">item 1</div>
+<div class="item">item 2</div>
+<div class="item">item 3</div>
+</div>
+</body
+</html>
+
+Flex-direction - é a propriedade que estabelece o eixo principal do container, definindo assim a direção que os flex items são colocados no flex container.
+
+Eixos horizontais:
+*row(padrão): à direção do texto, da esquerda para a direita.
+*row-reverse: sentido oposto à direção do texto.
+
+Eixos verticais:
+*column: ordenação de cima para baixo, em coluna unica.
+*column-reverse: ordenação inversa, de baixo para cima.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"
+<title>Fundamentos - Flex direction</title>
+
+<style>
+.flex-container{
+margin: 0;
+padding: 0;
+display: flex;
+list-style: none;
+}
+
+.flex-item{
+background: blue;
+height: 50px;
+width: 50px;
+line-height: 50px;
+font-size: 20px;
+color: white;
+text-align: center;
+margin: 5px;
+}
+
+.row{
+flex-direction: row;
+}
+
+.row-reverse{
+flex-direction: row-reverse;
+}
+
+.row-reverse li{
+background-color: red
+}
+
+.column{
+float: left;
+flex-direction: column;
+}
+
+.column li{
+background: orange;
+}
+
+.column-reverse{
+float: right;
+flex-direction: column-reverse;
+}
+
+.column-reverse li{
+background: purple;
+}
+
+</style>
+</head>
+<body>
+<ul class="flex-container row">
+<li class="flex-item">1</li>
+<li class="flex-item">2</li>
+<li class="flex-item">3</li>
+<li class="flex-item">4</li>
+<li class="flex-item">5</li>
+</ul>
+
+<ul class="flex-container row-reverse">
+<li class="flex-item">1</li>
+<li class="flex-item">2</li>
+<li class="flex-item">3</li>
+<li class="flex-item">4</li>
+<li class="flex-item">5</li>
+</ul>
+
+<ul class="flex-container column">
+<li class="flex-item">1</li>
+<li class="flex-item">2</li>
+<li class="flex-item">3</li>
+<li class="flex-item">4</li>
+<li class="flex-item">5</li>
+</ul>
+
+<ul class="flex-container column-reverse">
+<li class="flex-item">1</li>
+<li class="flex-item">2</li>
+<li class="flex-item">3</li>
+<li class="flex-item">4</li>
+<li class="flex-item">5</li>
+</ul>
+
+</body
+</html>
+
+
+
+Flex-wrap - é a propriedade que define se os itens devem ou não quebrar a linha do container. Por padrão eles não quebram linhas, isso fazcom que os flex itens sejam compactados além do limite do conteúdo.
+*nowrap - é o padrão, não permite a quebra de linha.
+*wrap - permite a quebra de linha assim que um dos flex itens não puder mais ser compactado.
+*wrap-reverse - permite a quebra de linha assim que um dos flex itens não puder mais ser compactado, porém na direção contrária da linha acima.
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"
+<title>Fundamentos - flex wrap</title>
+
+<style>
+.flex-container{
+display: flex;
+height: 150px;
+border: 2px solid black;
+max-width: 300px;
+}
+
+.item{
+font-size: 24px;
+height: 50%;
+text-align: center;
+min-width: 100px;
+line-height: 50px;
+}
+
+.nowrap{
+flex-wrap: nowrap;
+}
+
+.wrap{
+flex-wrap: wrap;
+}
+
+.blue{
+background-color: blue;
+}
+
+.green{
+background-color: lightgreen;
+}
+
+.orange{
+background-color: orangered;
+}
+
+</style>
+</head>
+<body>
+<h1>no wrap</h1>
+
+<div class="flex container nowrap">
+<div class="item orange">1</div>
+<div class="item green">2</div>
+<div class="item blue">3</div>
+<div class="item orange">4</div>
+</div>
+
+<h1>wrap</h1>
+
+<div class="flex container wrap">
+<div class="item green">1</div>
+<div class="item blue">2</div>
+<div class="item orange">3</div>
+<div class="item orange">4</div>
+</div>
+
+<h1>wrap reverse</h1>
+
+<div class="flex container wrap-reverse">
+<div class="item green">1</div>
+<div class="item blue">2</div>
+<div class="item orange">3</div>
+<div class="item orange">4</div>
+</div>
+
+
+</body
+</html>
+
+
+Flex-flow - é um atalho para as propriedades flex-direction e flex-wrap. Porém seu uso não é tão comum, visto que, quando mudamos o flex-direction para column, mantemos o padrão do flex-wrap que é nowrap.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"
+<title>Fundamentos - flex flow</title>
+
+<style>
+.flex-container{
+display: flex;
+border: 1px solid black;
+max-width: 500px;
+margin-bottom: 10px;
+}
+
+.default{
+flex-flow: row nowrap;
+}
+
+.wrap{
+flex-flow: row wrap;
+}
+
+.item{
+background-color: blueviolet;
+margin: 5px;
+color: white;
+text-align: center;
+width: 100px;
+height: 50px;
+line-height: 50px;
+}
+
+</style>
+
+</head>
+<body>
+<h1>default: row nowrap</h1>
+<div class="flex-container default">
+<div class="item">1</div>
+<div class="item">2</div>
+<div class="item">3</div>
+<div class="item">4</div>
+<div class="item">5</div>
+</div>
+
+<h1>wrap</h1>
+<div class="flex-container wrap">
+<div class="item">1</div>
+<div class="item">2</div>
+<div class="item">3</div>
+<div class="item">4</div>
+<div class="item">5</div>
+<div class="item">6</div>
+</div>
+
+</body
+</html>
+
+
+
+Justify Content - Essa propriedade vai se encarregar de alinhar os itens dentro do container de acordo com a direção pretendida e tratar da distribuição de espaçamento entre eles.
+OBS: caso seus itens esteja ocupando 100% de todo o container, ele não se aplica.
+As variações;
+*flex-start: início do container;
+*flex-end: final do container;
+*center: ao centro do container;
+*space-between: cria um espaçamento igual entre os elementos.
+*space-around: os espaçamentos do meio são duas vezes maiores que o inicial e final.
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fundamentos - justify-content</title>
+<style>
+
+.container{
+max-width: 400px;
+border: 1px solid black;
+margin: 0;
+display: flex;
+margin-bottom: 10px;
+}
+
+.item{
+background-color: blueviolet;
+margin: 5px;
+text-align: center;
+color: white;
+}
+
+.flex-start{
+justify-content: flex-start;
+}
+
+.flex-end{
+justify-content: flex-end;
+}
+
+.center{
+justify-content: center;
+}
+
+.space-between{
+justify-content: space-between;
+}
+
+.space-around{
+justify-content: space-around;
+}
+
+.column{
+flex-direction: column;
+min-height: 200px;
+}
+
+</style>
+</head>
+<body>
+<h1>row</h1>
+<p>flex-start</p>
+<section class="container flex-start">
+<div class="item">1</div>
+<div class="item">item 2</div>
+<div class="item">outro item</div>
+</section>
+
+<p>flex-end</p>
+<section class="container flex-end">
+<div class="item">1</div>
+<div class="item">item 2</div>
+<div class="item">outro item</div>
+</section>
+
+<p>center</p>
+<section class="container center">
+<div class="item">1</div>
+<div class="item">item 2</div>
+<div class="item">outro item</div>
+<div class="item">4</div>
+<div class="item">5</div>
+</section>
+
+<p>space-between</p>
+<section class="container space-between">
+<div class="item">1</div>
+<div class="item">item 2</div>
+<div class="item">outro item</div>
+<div class="item">4</div>
+<div class="item">5</div>
+</section>
+
+<p>space-around</p>
+<section class="container space-around">
+<div class="item">1</div>
+<div class="item">item 2</div>
+<div class="item">outro item</div>
+<div class="item">4</div>
+<div class="item">5</div>
+</section>
+
+<h1>column</h1>
+
+<p>flex-start</p>
+<section class="container flex-start column">
+<div class="item">1</div>
+<div class="item">item 2</div>
+<div class="item">outro item</div>
+<div class="item">4</div>
+<div class="item">5</div>
+</section>
+
+<p>flex-end</p>
+<section class="container flex-end column">
+<div class="item">1</div>
+<div class="item">item 2</div>
+<div class="item">outro item</div>
+<div class="item">4</div>
+<div class="item">5</div>
+</section>
+
+<p>center</p>
+<section class="container center column">
+<div class="item">1</div>
+<div class="item">item 2</div>
+<div class="item">outro item</div>
+<div class="item">4</div>
+<div class="item">5</div>
+</section>
+
+<p>space-between</p>
+<section class="container space-between column">
+<div class="item">1</div>
+<div class="item">item 2</div>
+<div class="item">outro item</div>
+<div class="item">4</div>
+<div class="item">5</div>
+</section>
+
+<p>space-around</p>
+<section class="container space-around column">
+<div class="item">1</div>
+<div class="item">item 2</div>
+<div class="item">outro item</div>
+<div class="item">4</div>
+<div class="item">5</div>
+</section>
+
+</body>
+</html>
+
+-------------------------------------------------------------------------------------
+
+Align-items - Trata do alinhamento dos flex itens de acordo com o eixo do container. O alinhamento é diferente para quando os itens estão em colunas ou linhas. Permite o alinhamento central no eixo vertical.
+Tipos de alinhamento:
+*center - alinhamento dos itens ao centro.
+*stretch - padrão, e faz com que os flex itens cresçam igualmente
+*flex-start - alinhamento dos itens no início
+*flex-end - alinhamento dos itens no final
+*baseline - alinhamento de acordo com a linha base da tipografia dos itens
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"
+<title>Fundamentos - align itens</title>
+
+<style>
+.container{
+max-width: 350px;
+border: 1px solid black;
+display: flex;
+}
+
+.item{
+background-color: blueviolet;
+margin: 5px;
+color: white;
+text-align: center;
+}
+
+.flex{
+flex: 1;
+}
+
+.center{
+align-items: center;
+}
+
+.stretch{
+align-items: stretch;
+}
+
+.start{
+align-items: flex-start;
+}
+
+.end{
+align-items: flex-end;
+}
+
+.baseline{
+align-items: baseline;
+}
+
+.column{
+flex-direction: column;
+}
+
+.central{
+height: 400px;
+justify-content: center;
+}
+
+.central .item{
+flex: 0;
+padding: 20px;
+}
+
+</style>
+
+</head>
+<body>
+
+<p>center</p>
+<section class="container center">
+<div class="item">Item 1</div>
+<div class="item">Lorem ipsum dolor sit amet</div>
+<div class="item">Item 3 mais algum texto. Lipsum</div>
+</section>
+
+<p>stretch</p>
+<section class="container stretch">
+<div class="item">Item 1</div>
+<div class="item">Lorem ipsum dolor sit amet. teste, teste, teste, teste, teste, teste</div>
+<div class="item">Item 3 mais algum texto. Lipsum</div>
+</section>
+
+<p>flex-start</p>
+<section class="container start">
+<div class="item">Item 1</div>
+<div class="item">Lorem ipsum dolor sit amet.</div>
+<div class="item">Item 3 mais algum texto. Lipsum teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste</div>
+</section>
+
+<p>flex-end</p>
+<section class="container end">
+<div class="item">Item 1</div>
+<div class="item">Lorem ipsum dolor sit amet.</div>
+<div class="item">Item 3 mais algum texto. Lipsum teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste</div>
+</section>
+
+<p>baseline</p>
+<section class="container baseline">
+<div class="item"><br>Item 1</div>
+<div class="item">Lorem ipsum dolor sit amet.</div>
+<div class="item">Item 3 mais algum texto. Lipsum teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste</div>
+</section>
+
+<h1>column</h1>
+<p>flex-start</p>
+<section class="container start column">
+<div class="item">Item 1</div>
+<div class="item">Lorem ipsum dolor sit amet.</div>
+<div class="item">Item 3 mais algum texto. Lipsum teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste</div>
+</section>
+
+<p>flex-end</p>
+<section class="container end column">
+<div class="item">Item 1</div>
+<div class="item">Lorem ipsum dolor sit amet.</div>
+<div class="item">Item 3 mais algum texto. Lipsum teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste</div>
+</section>
+
+<p>center</p>
+<section class="container center column">
+<div class="item">Item 1</div>
+<div class="item">Lorem ipsum dolor sit amet</div>
+<div class="item">Item 3 mais algum texto. Lipsum</div>
+</section>
+
+<p>baseline</p>
+<section class="container baseline column">
+<div class="item"><br>Item 1</div>
+<div class="item">Lorem ipsum dolor sit amet.</div>
+<div class="item">Item 3 mais algum texto. Lipsum teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste</div>
+</section>
+
+<p>alinhamento central à tela</p>
+<section class="container central center">
+<div class="item">Item 3 mais algum texto. Lipsum teste teste teste teste</div>
+</section>
+
+</body>
+</html>
+
+
+
+
+
+
+Align-content: é a propriedade responsável por tratar o alinhamento das linhas do container em relação ao eixo vertical do container.
+Precisamos que:
+*O container utilize quebra de linhas;
+*A altura do container seja maior que a soma das linhas dos itens.
+Tipos de alinhamento:
+*center: alinhamento dos itens ao centro;
+*stretch: é o padrão e os flex itens crescem igualmente;
+*flex-start: alinhamento dos itens no início;
+*flex-end: alinhamento dos itens no final;
+*space-between: cria um espaçamento igual entre os elementos;
+*space-around: os espaçamentos do meio são duas vezes maiores que o inicial e final;
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"
+    <title>Fundamentos - align content</title>
+  <style>
+.container{
+height: 350px;
+max-width: 300px;
+display: flex;
+flex-wrap: wrap;
+border: 1px solid black;
+}
+
+.item{
+background-color: orangered;
+padding: 0 5px;
+margin: 5px;
+flex: 1;
+text-align: center;
+color: white;
+border: 2px solid black;
+}
+
+.stretch{
+align-content: stretch;
+}
+
+.center{
+align-content: center;
+}
+
+.flex-start{
+align-content: flex-start;
+}
+
+.flex-end{
+align-content: flex-end;
+}
+
+.space-around{
+align-content: space-around;
+}
+
+.space-between{
+align-content: space-around;
+}
+  </style>
+  </head>
+  <body>
+<p>stretch</p>
+<div class="container stretch">
+<div class="item">Lorem Ipsum is simply dummy.</div>
+<div class="item">Lorem Ipsum is simply</div>
+<div class="item">Lorem Ipsum is simply dummy text.</div>
+<div class="item">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+<div class="item">Lorem Ipsum is simply dummy text</div>
+<div class="item">Lorem Ipsum is simply dummy text</div>
+<div class="item">Lorem Ipsum is simply dummy text</div>
+</div>
+
+<p>center</p>
+<div class="container center">
+<div class="item">Lorem Ipsum is simply dummy.</div>
+<div class="item">Lorem Ipsum is simply</div>
+<div class="item">Lorem Ipsum is simply dummy text.</div>
+<div class="item">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+<div class="item">Lorem Ipsum is simply dummy text</div>
+<div class="item">Lorem Ipsum is simply dummy text</div>
+<div class="item">Lorem Ipsum is simply dummy text</div>
+</div>
+
+<p>flex-start</p>
+<div class="container flex-start">
+<div class="item">Lorem Ipsum is simply dummy.</div>
+<div class="item">Lorem Ipsum is simply</div>
+<div class="item">Lorem Ipsum is simply dummy text.</div>
+<div class="item">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+<div class="item">Lorem Ipsum is simply dummy text</div>
+<div class="item">Lorem Ipsum is simply dummy text</div>
+<div class="item">Lorem Ipsum is simply dummy text</div>
+</div>
+
+<p>flex-end</p>
+<div class="container flex-end">
+<div class="item">Lorem Ipsum is simply dummy.</div>
+<div class="item">Lorem Ipsum is simply</div>
+<div class="item">Lorem Ipsum is simply dummy text.</div>
+<div class="item">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+<div class="item">Lorem Ipsum is simply dummy text</div>
+<div class="item">Lorem Ipsum is simply dummy text</div>
+<div class="item">Lorem Ipsum is simply dummy text</div>
+</div>
+
+<p>space-around</p>
+<div class="container space-around">
+<div class="item">Lorem Ipsum is simply dummy.</div>
+<div class="item">Lorem Ipsum is simply</div>
+<div class="item">Lorem Ipsum is simply dummy text.</div>
+<div class="item">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+<div class="item">Lorem Ipsum is simply dummy text</div>
+<div class="item">Lorem Ipsum is simply dummy text</div>
+<div class="item">Lorem Ipsum is simply dummy text</div>
+</div>
+
+<p>space-between</p>
+<div class="container space-between">
+<div class="item">Lorem Ipsum is simply dummy.</div>
+<div class="item">Lorem Ipsum is simply</div>
+<div class="item">Lorem Ipsum is simply dummy text.</div>
+<div class="item">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+<div class="item">Lorem Ipsum is simply dummy text</div>
+<div class="item">Lorem Ipsum is simply dummy text</div>
+<div class="item">Lorem Ipsum is simply dummy text</div>
+</div>
+  </body>
+</html>
+
+--------------------------------------------------------------------------------------
+Flex Grow - Define a proporcionalidade de crescimentos dos itens, respeitando o tamanho de seus conteúdos internos.
+OBS: não irá funcionar caso tenhamos adicionado justify-content ao nosso flex container.
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"
+<title>Fundamentos - flex grow</title>
+
+<style>
+.flex-container{
+display: flex;
+border: 2px solid black;
+max-width: 300px;
+}
+
+.item{
+background-color: orangered;
+margin: 5px;
+padding: 10px;
+text-align: center;
+color: white;
+}
+
+.fg-0{
+flex-grow: 0;
+}
+</style>
+
+</head>
+<body>
+<div class="container">
+<div class="item fg-0">A</div>
+<div class="item fg-0">B</div>
+<div class="item fg-0">C</div>
+<div class="item fg-0">D</div>
+
+</body>
+</html>
+
