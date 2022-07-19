@@ -1,0 +1,126 @@
+Sintaxe e Operadores JavaScript
+
+Os operadores no JavaScript são sinais que utilizamos para manipular um certo valor ou pra validar uma certa condição.
+Os principais operadores são: 
+*Aritmética
+*Atribuição
+*Comparação
+*Lógica
+*Condicional
+
+
+Operador       Descrição
++              Adição
+-              Subtração
+*              Multiplicação
+**             Exponencial
+/              Divisão
+%              Módulo
+++             Incrementar
+--             Decrementar
+
+
+Operadores de Comparação
+
+Operador       Descrição
+==             Igual a
+===            Mesmo valor e mesmo tipo
+!=             Diferente
+!==            Valor e tipos diferentes
+>              Maior que
+<              Menor que
+>=             Maior ou igual
+<=             Menor ou igual
+
+
+Operadores de Lógica
+Operador       Descrição
+&&             "e" lógico
+||             "ou" lógico
+!              "não" lógico
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+function comparaNumeros(num1, num2) {
+  const saoIguais = num1 === num2;
+  const soma = num1 + num2;
+
+  if(saoIguais) {
+    return "São iguais";
+  }
+
+  return "Não são iguais";
+}
+
+
+
+function comparaNumeros(num1, num2) {
+  const saoIguais = num1 === num2;
+  const soma = num1 + num2;
+
+  if(!saoIguais) {
+    return "Não são iguais";
+  }
+
+  return "São iguais";
+}
+
+
+
+function comparaNumeros(num1, num2) {
+  const saoIguais = num1 === num2;
+  const soma = num1 + num2;
+
+  return saoIguais ? "São iguais" : "Não são iguais";
+}
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+function comparaNumeros(num1, num2) {
+  const primeiraFrase = criaPrimeiraFrase(num1, num2);
+  const segundaFrase = criaSegundaFrase(num1, num2);
+
+  return '${primeiraFrase} ${segundaFrase}'
+}
+
+function criaPrimeiraFrase(num1, num2) {
+  let saoIguais = '';
+
+  if(num1 !== num2) {
+    saoIguais = 'não';
+  }
+
+  return 'Os números ${num1} e ${num2} $
+  {saoIguais} são iguais.'
+};
+
+function criaSegundaFrase(num1, num2) {
+  const soma = num1 + num2;
+
+  let resultado10 = 'menor';
+  let resultado20 = 'menor';
+
+  const compara10 = soma > 10;
+  const compara20 = soma > 20;
+
+  if(compara10) {
+    resultado10 = 'maior';
+  }
+
+  if(compara20) {
+  resultado20 = 'maior';
+  }
+
+  return 'Sua soma é ${soma}, que é ${resultado10} que 10 e ${resultado20} que 20.'
+}
+
+
+console.log(comparaNumeros(20, 20));
+
+
+
+
+

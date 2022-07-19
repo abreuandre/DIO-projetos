@@ -1,0 +1,31 @@
+Variáveis e Tipos com JavaScript
+
+Atribuição de valores
+
+Case Type                               Example
+Original Variable as String             some awesome var
+Camel Case                              someAwesomeVar
+Snake Case                              some_awesome_var
+Kebab Case                              some-awesome-var
+Pascal Case                             SomeAwesomeVar
+Upper Case Snake Case                   SOME_AWESOME_VAR
+
+
+Variáveis
+
+let - introduz o conceito de escopo de bloco, ou seja, só funciona entre {}.
+Hoisting - atribuir um valor a uma variável antes de declarar ela.
+
+var a = 1;
+var b = 2;
+
+if (a === 1) {
+var a = 11; // the scope is global
+let b = 22; // the scope is inside the if-block
+
+console.log(a); // 11
+console.log(b); // 22
+}
+
+console.log(a); // 11
+console.log(b); // 2
