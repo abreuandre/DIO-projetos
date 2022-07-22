@@ -1,0 +1,349 @@
+Variáveis e Tipos com JavaScript
+
+Atribuição de valores
+
+Case Type                               Example
+Original Variable as String             some awesome var
+Camel Case                              someAwesomeVar
+Snake Case                              some_awesome_var
+Kebab Case                              some-awesome-var
+Pascal Case                             SomeAwesomeVar
+Upper Case Snake Case                   SOME_AWESOME_VAR
+
+
+Variáveis
+
+let - introduz o conceito de escopo de bloco, ou seja, só funciona entre {}.
+Hoisting - atribuir um valor a uma variável antes de declarar ela.
+
+var a = 1;
+var b = 2;
+
+if (a === 1) {
+var a = 11; // the scope is global
+let b = 22; // the scope is inside the if-block
+
+console.log(a); // 11
+console.log(b); // 22
+}
+
+console.log(a); // 11
+console.log(b); // 2
+
+
+------------------------------------------------------------------------------------------------------------------------
+Estruturas de dados
+
+Javascript é uma linguagem de tipagem dinâmica e fraca. Ou seja, antes de declarar um valor, você não especifica o tipo dele.
+
+let um = "um";
+undefined
+
+um
+"um"
+
+typeof um
+"String"
+
+um = 1
+1
+
+typeof um 
+"number"
+
+O typeof informa qual é o tipo da variável.
+
+Os tipos de dados do JS são divididos em 2 grandes grupos:
+-Tipos primitivos: numbers, strings, boolean(true or false), null, undefined. Tipos primitivos não tem métodos dentro deles.
+-Tipos compostos/Não primitivos: objects, arrays.
+
+
+Strings
+-Comumente utilizada para textos;
+-Valores declarados entre aspas ou crases.
+
+Ex:
+const DIO = 'Digital Innovation One';
+
+let firstName = 'João';
+let lastName = 'Luiz';
+
+let fullName = 'Nome completo: ${firstName} ${lastName}'; //Nesse exemplo com o uso do ${} podemos usar variáveis no programa. 
+
+
+Para modificar uma string para um objeto basta declarar a variável recebendo um new String():
+ex:
+let exemplo = new String("blablabla")
+undefined
+
+typeof exemplo
+"object"
+
+exemplo
+String {"blablabla"}
+
+exemplo.length
+9
+
+let vazio = ""
+undefined
+
+typeof vazio
+"string"
+
+
+A string é um tipo de dado iterável:
+
+concatenado
+"JoãoPedro"
+
+concatenado = nome + " " + sobrenome
+"João Pedro"
+
+concatenado = nome + "\n" + sobrenome
+"João
+Pedro"
+
+concatenado = nome + "\n\n" + sobrenome
+"João
+
+Pedro"
+
+concatenado = `${nome} ${sobrenome}`
+"João Pedro"
+
+concatenado = `${nome}
+
+${sobrenome}`
+
+"João
+
+Pedro"
+
+
+let frase = "Olá, tudo bem?"
+undefined
+
+frase.split("")
+(14) ["O", "l", "á", ",", " ", "t", "u", "d", "o", " ", "b", "e", "m", "?"]
+
+frase.split(" ")
+(3) ["Olá", "tudo", "bem?"]
+
+
+frase.includes("tudo")
+true
+
+frase
+"Olá, tudo bem?"
+
+frase.startsWith("O")
+true
+
+frase.startsWith("R")
+false
+
+frase.startsWith("?")
+true
+
+frase.replace(",", "!")
+"Olá! tudo bem?"
+
+
+let stringModificada = frase.replace(",", "!")
+undefined
+
+frase
+"Olá, tudo bem?"
+
+stringModificada
+"Olá! tudo bem?"
+
+
+Principais métodos das Strings:
+-Concatenação
+-Propriedade length(Usado para ver o tamanho da string)
+-Iterabilidade(usado para checar o que tem em cada índice, em cada caracter da string, ou seja, extraindo separadamente.)
+-Formatação(alterar a string toda para maiúscula, minúscula, tirar os espaços ou separar os caracteres)
+-Index das letras.
+
+
+
+NUMBERS
+
+-Inteiros e decimais
+
+let num = 100
+undefined
+
+100 + 3
+103
+
+100 / 5
+20
+
+num
+100
+
+num / 3
+33.333333333333336
+
+num
+100
+
+num * 5
+500
+
+num % 2
+0
+
+
+ARRAYS
+
+São listas iteráveis de elementos.
+
+let array = []
+
+array.push(3)
+1
+
+array
+[3]
+
+array.push(2)
+2
+
+array
+(2) [3, 2]
+
+array.pop()
+2
+
+array[3]
+
+array.push(2)
+2
+
+array.push(5)
+3
+
+array.shift()
+3
+
+array
+(2) [2, 5]
+
+array.unshift(1)
+3
+
+array
+(3) [1, 2, 5]
+
+
+
+
+OBJETO
+
+Estrutura do tipo chave valor
+declaração: 
+
+let person = {
+    name: 'John',
+    age: 20
+
+};
+
+ex:
+let obj = {}
+undefined
+
+typeof obj
+"object"
+
+obj.name = "julia"
+"julia"
+
+obj
+{name: "julia"}
+  name: "julia"
+  _proto_: Object
+
+obj.age = 20
+20
+
+obj
+{name: "julia", age: 20}
+  age: 20
+  name: "julia"
+  _proto_: Object
+
+Object.values(obj)
+(2) ["julia", 20]
+
+Object.keys(obj)
+(2) ["name", "age"]
+
+let person = {
+  name: "Julia",
+  age: 20,
+  address: "Rua 2"
+}
+
+
+person
+{name: "Julia", age: 20, address: "Rua 2"}
+  address: "Rua 2"
+  age: 20
+  name: "Julia"
+  _proto_: Object
+
+person.name
+"Julia"
+
+person["name"]
+"Julia"
+
+person["numberOfSiblings"] = 3
+3
+
+person
+{name: "Julia", age: 20, address: "Rua 2", numberOfSiblings: 3}
+  address: "Rua 2"
+  age: 20
+  name: "Julia"
+  numberOfSiblings: 3
+  _proto_: Object
+
+let mom = "nameOfMom"
+undefined
+
+person[mom] = "Maria"
+"Maria"
+
+person
+{name: "Julia", age: 20, address: "Rua 2", numberOfSiblings: 3, nameOfMom: "Maria"}
+  address: "Rua 2"
+  age: 20
+  name: "Julia"
+  nameOfMom: "Maria"
+  numberOfSiblings: 3
+  _proto_: Object
+
+
+EMPTY, NULL E UNDEFINED
+
+empty - quer dizer que declaramos uma determinada variável conforme exemplos abaixo:
+*Se é um número, definimos a variável como 0;
+*Se é uma string, declaramos apenas com "";
+*Se é um array, declaramos apenas usando [];
+*Se é um objeto, declaramos apenas com {};
+
+Ou seja, não tem nenhum valor dentro.
+
+
+null - é quando queremos que propositalmente aquele determinado valor não exista, ou seja, ele não foi inicializado, ele de fato não existe, nulo.
+
+
+undefined - não tem nada declarado.
+
+
